@@ -1,8 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const usersRoutes = require('./routes/users');
-const usersJWTRoutes = require('./routes/users_jwt');
-const ventasRoutes = require('./routes/ventas')
+const CustomerRoutes = require('./routes/customer');
+const FlightRoutes = require('./routes/flight');
+const ReservationRoutes = require('./routes/reservation');
+const PassengerRoutes = require('./routes/passenger');
+const PaymentRoutes = require('./routes/payment');
+
 require('dotenv').config();
 const app = express();
 const port = process.env.DB_PORT || 3000;
@@ -11,9 +14,11 @@ const port = process.env.DB_PORT || 3000;
 app.use(bodyParser.json());
 
 // Usar las rutas de los items
-app.use('/users', usersRoutes);
-app.use('/usersJWT', usersJWTRoutes);
-app.use('/ventas',ventasRoutes)
+app.use('/customer', CustomerRoutes);
+app.use('/flight', FlightRoutes);
+app.use('/reservation', ReservationRoutes);
+app.use('/passenger',PassengerRoutes);
+app.use('/payment', PaymentRoutes);
 
 // Iniciar el servidor
 app.listen(port, () => {
