@@ -29,11 +29,6 @@ exports.getAllRes = (req, res) => {
 
 exports.addReservation = (req, res) => {
     const { date, checklist, cost, email, origin, destination } = req.body;
-  
-    if (!date || !checklist || !cost || !email || !origin || !destination) {
-      return res.status(400).json({ error: 'All fields are required' });
-    }
-  
     const query = `
       SELECT Customer.idCustomer, Flight.idFlight 
       FROM Customer
